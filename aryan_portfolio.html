@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aryan Kumar Gupta — Software Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F7F8F6;
+    --panel:#FFFFFF;
+    --ink:#14181C;
+    --muted:#5B6770;
+    --line:#DDE2E0;
+    --blue:#2D6CDF;
+    --green:#1E8E5A;
+    --amber:#C97A1A;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.6;
+  }
+  a{color:inherit;}
+
+  .mono{font-family:'IBM Plex Mono',monospace;}
+
+  /* Nav */
+  nav{
+    position:sticky; top:0; z-index:100;
+    background:rgba(247,248,246,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+    padding:1rem 2rem;
+    display:flex; justify-content:space-between; align-items:center;
+  }
+  nav .logo{
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:700;
+    font-size:1.05rem;
+  }
+  nav .logo .dot{color:var(--green);}
+  nav ul{display:flex; list-style:none; gap:1.75rem;}
+  nav ul li a{
+    text-decoration:none;
+    font-size:0.85rem;
+    font-weight:500;
+    color:var(--muted);
+  }
+  nav ul li a:hover{color:var(--ink);}
+
+  /* Hero */
+  header{
+    padding:5.5rem 2rem 4rem;
+    max-width:920px;
+    margin:0 auto;
+    border-bottom:1px solid var(--line);
+  }
+  .status-line{
+    display:inline-flex; align-items:center; gap:0.5rem;
+    font-size:0.78rem; color:var(--amber);
+    margin-bottom:1.75rem;
+  }
+  .status-line .led{
+    width:7px; height:7px; border-radius:50%;
+    background:var(--amber);
+    box-shadow:0 0 0 3px rgba(201,122,26,0.15);
+  }
+  header h1{
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:700;
+    font-size:clamp(2.1rem, 4.6vw, 3.1rem);
+    line-height:1.12;
+    letter-spacing:-0.01em;
+    max-width:680px;
+  }
+  header h1 .accent{color:var(--blue);}
+  header p.role{
+    font-size:1.05rem;
+    color:var(--muted);
+    margin-top:1.1rem;
+    max-width:560px;
+  }
+  .contact-row{
+    display:flex; flex-wrap:wrap; gap:1.25rem;
+    margin-top:2rem;
+    font-size:0.85rem;
+    color:var(--muted);
+  }
+  .contact-row a{border-bottom:1px solid var(--line);}
+  .contact-row a:hover{color:var(--blue); border-color:var(--blue);}
+  .edu-badge{
+    display:inline-flex; align-items:center; gap:0.6rem;
+    margin-top:1.75rem;
+    background:var(--ink);
+    color:var(--bg);
+    padding:0.6rem 1.1rem;
+    border-radius:4px;
+    font-size:0.82rem;
+  }
+  .edu-badge .mono{color:#9FD6B8;}
+
+  /* Layout */
+  .container{max-width:920px; margin:0 auto; padding:0 2rem;}
+  section{padding:3.5rem 0; border-bottom:1px solid var(--line);}
+  section:last-of-type{border-bottom:none;}
+
+  .section-head{
+    display:flex; align-items:baseline; gap:0.75rem;
+    margin-bottom:2rem;
+  }
+  .section-head .tag{
+    font-size:0.72rem;
+    color:var(--blue);
+    border:1px solid var(--blue);
+    padding:0.15rem 0.5rem;
+    border-radius:3px;
+  }
+  h2{
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:600;
+    font-size:1.55rem;
+  }
+
+  /* Experience */
+  .job{
+    display:grid;
+    grid-template-columns:200px 1fr;
+    gap:2rem;
+    padding:1.75rem 0;
+    border-top:1px solid var(--line);
+  }
+  .job:first-of-type{border-top:none;}
+  .job .meta{font-size:0.8rem; color:var(--muted);}
+  .job .meta .period{
+    margin-top:0.4rem;
+    display:inline-block;
+  }
+  .job .meta .current{
+    color:var(--green);
+    font-weight:500;
+  }
+  .job h3{
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:600;
+    font-size:1.1rem;
+    margin-bottom:0.2rem;
+  }
+  .job .company{
+    color:var(--blue);
+    font-size:0.9rem;
+    font-weight:500;
+    margin-bottom:0.85rem;
+  }
+  .job ul{list-style:none;}
+  .job li{
+    position:relative;
+    padding-left:1.1rem;
+    margin-bottom:0.6rem;
+    font-size:0.93rem;
+    color:#374149;
+  }
+  .job li::before{
+    content:'›';
+    position:absolute; left:0;
+    color:var(--blue);
+    font-weight:600;
+  }
+  .job li strong{color:var(--ink);}
+
+  /* Skills */
+  .skill-block{margin-bottom:1.5rem;}
+  .skill-block:last-child{margin-bottom:0;}
+  .skill-block .label{
+    font-size:0.72rem;
+    color:var(--muted);
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    margin-bottom:0.65rem;
+    display:block;
+  }
+  .pill-row{display:flex; flex-wrap:wrap; gap:0.6rem;}
+  .pill{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:4px;
+    padding:0.45rem 0.85rem;
+    font-size:0.85rem;
+    font-weight:500;
+  }
+
+  /* Project */
+  .project-card{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:6px;
+    overflow:hidden;
+  }
+  .project-card .head{
+    padding:1.5rem 1.75rem;
+    border-bottom:1px solid var(--line);
+    display:flex; justify-content:space-between; align-items:flex-start;
+    gap:1rem;
+    flex-wrap:wrap;
+  }
+  .project-card h3{
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:600;
+    font-size:1.2rem;
+  }
+  .stack-row{display:flex; flex-wrap:wrap; gap:0.4rem;}
+  .stack-chip{
+    font-size:0.72rem;
+    color:var(--muted);
+    border:1px solid var(--line);
+    padding:0.2rem 0.55rem;
+    border-radius:3px;
+  }
+  .feature-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(240px,1fr));
+  }
+  .feature{
+    padding:1.5rem 1.75rem;
+    border-right:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+  .feature:nth-child(2n){border-right:none;}
+  .feature h4{
+    font-size:0.92rem;
+    font-weight:600;
+    margin-bottom:0.4rem;
+    display:flex; align-items:center; gap:0.5rem;
+  }
+  .feature h4::before{
+    content:'';
+    width:6px; height:6px;
+    background:var(--blue);
+    display:inline-block;
+    border-radius:1px;
+  }
+  .feature p{font-size:0.87rem; color:var(--muted);}
+
+  /* Education */
+  .edu-row{
+    display:flex; justify-content:space-between; align-items:flex-start;
+    flex-wrap:wrap; gap:1rem;
+  }
+  .edu-row h3{
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:600;
+    font-size:1.1rem;
+    margin-bottom:0.3rem;
+  }
+  .edu-row .degree{color:var(--muted); font-size:0.9rem;}
+  .cgpa{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.9rem;
+    background:var(--panel);
+    border:1px solid var(--line);
+    padding:0.4rem 0.8rem;
+    border-radius:4px;
+  }
+  .cgpa b{color:var(--green);}
+
+  /* Footer */
+  footer{
+    text-align:center;
+    padding:2.5rem 2rem;
+    color:var(--muted);
+    font-size:0.82rem;
+  }
+  footer a{border-bottom:1px solid var(--line); padding-bottom:1px;}
+  footer a:hover{color:var(--blue); border-color:var(--blue);}
+
+  @media (max-width:640px){
+    nav ul{display:none;}
+    .job{grid-template-columns:1fr; gap:0.5rem;}
+    .feature{border-right:none;}
+  }
+
+  :focus-visible{outline:2px solid var(--blue); outline-offset:2px;}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">aryan<span class="dot">.</span>dev</div>
+  <ul>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#project">Project</a></li>
+    <li><a href="#education">Education</a></li>
+  </ul>
+</nav>
+
+<header>
+  <div class="status-line"><span class="led"></span><span class="mono">open to new opportunities</span></div>
+  <h1>Backend systems that hold up under <span class="accent">real usage</span>.</h1>
+  <p class="role">Software engineer building RESTful APIs, data layers, and test coverage on .NET Core &amp; C#.</p>
+  <div class="contact-row">
+    <a href="mailto:aryangupta190950@gmail.com">aryangupta190950@gmail.com</a>
+    <a href="tel:+917044190950">+91 70441 90950</a>
+  </div>
+  <div class="edu-badge"><span class="mono">studying now</span> MBA‑BM at XIMB</div>
+</header>
+
+<div class="container">
+
+  <section id="experience">
+    <div class="section-head"><span class="tag mono">WORK</span><h2>Experience</h2></div>
+
+    <div class="job">
+      <div class="meta">
+        <div class="period">Aug '24 — Jun '26</div>
+      </div>
+      <div>
+        <h3>Associate Software Engineer</h3>
+        <div class="company">Clinisys</div>
+        <ul>
+          <li><strong>Backend development:</strong> built and maintained RESTful APIs using .NET Core C# and Entity Framework, with a focus on scalable, maintainable service architecture.</li>
+          <li><strong>Data management:</strong> wrote efficient, secure CRUD operations with LINQ to handle complex business logic and validation.</li>
+          <li><strong>Testing &amp; QA:</strong> ran unit tests, manual testing, and automated tests with Selenium (C#) — raising test coverage and cutting down regression issues.</li>
+          <li><strong>Documentation:</strong> produced setup guides, feature walkthroughs, and technical references for the product.</li>
+          <li><strong>Agile collaboration:</strong> worked in a Scrum environment alongside UI/UX and QA for smooth, coordinated delivery.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="meta">
+        <div class="period">Feb '24 — Jul '24</div>
+      </div>
+      <div>
+        <h3>Software Engineer Intern</h3>
+        <div class="company">Clinisys</div>
+        <ul>
+          <li><strong>Structured training:</strong> completed training in .NET Framework, C#, Entity Framework, LINQ, and React.</li>
+          <li><strong>Agile exposure:</strong> took part in sprint planning, stand-ups, and delivery practices.</li>
+          <li><strong>Testing skills:</strong> learned manual testing and automation testing with Selenium (C#).</li>
+          <li><strong>Hands-on contributions:</strong> got familiar with the codebase and resolved minor development tasks and bug fixes.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="section-head"><span class="tag mono">STACK</span><h2>Skills</h2></div>
+    <div class="skill-block">
+      <span class="label">Development</span>
+      <div class="pill-row">
+        <span class="pill">.NET Core C#</span>
+        <span class="pill">LINQ</span>
+        <span class="pill">Entity Framework</span>
+      </div>
+    </div>
+    <div class="skill-block">
+      <span class="label">Database</span>
+      <div class="pill-row">
+        <span class="pill">SQL Server</span>
+        <span class="pill">CRUD Operations</span>
+      </div>
+    </div>
+    <div class="skill-block">
+      <span class="label">Testing</span>
+      <div class="pill-row">
+        <span class="pill">Manual Testing</span>
+        <span class="pill">Selenium (C#) Automation</span>
+        <span class="pill">Unit Testing</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="project">
+    <div class="section-head"><span class="tag mono">BUILD</span><h2>Project</h2></div>
+    <div class="project-card">
+      <div class="head">
+        <h3>Doctor Online Booking System</h3>
+        <div class="stack-row">
+          <span class="stack-chip">.NET</span>
+          <span class="stack-chip">C#</span>
+          <span class="stack-chip">React‑JS</span>
+          <span class="stack-chip">SQL Server</span>
+          <span class="stack-chip">Entity Framework</span>
+          <span class="stack-chip">Web API</span>
+          <span class="stack-chip">MUI</span>
+        </div>
+      </div>
+      <div class="feature-grid">
+        <div class="feature">
+          <h4>Authentication &amp; Authorization</h4>
+          <p>Two distinct login types — admin and user — each with permissions scoped to their role.</p>
+        </div>
+        <div class="feature">
+          <h4>Private routes</h4>
+          <p>Access to parts of the app is restricted by role, so only authorized users reach certain routes.</p>
+        </div>
+        <div class="feature">
+          <h4>Role-based navigation</h4>
+          <p>A Material‑UI navigation bar that dynamically shows links based on who's logged in.</p>
+        </div>
+        <div class="feature">
+          <h4>React‑PDF export</h4>
+          <p>Generates and displays appointment details as a formatted PDF, ready to view or download.</p>
+        </div>
+        <div class="feature">
+          <h4>Full CRUD coverage</h4>
+          <p>Create, read, update, and delete operations across doctors, appointments, and user accounts.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="section-head"><span class="tag mono">EDU</span><h2>Education</h2></div>
+    <div class="edu-row">
+      <div>
+        <h3>Xavier Institute of Management, Bhubaneswar (XIMB)</h3>
+        <div class="degree">MBA — Business Management · currently pursuing</div>
+      </div>
+    </div>
+    <div class="edu-row" style="margin-top:1.5rem;">
+      <div>
+        <h3>Techno India University</h3>
+        <div class="degree">B.Tech, Computer Science · 2020 – 2024</div>
+      </div>
+      <div class="cgpa">CGPA <b>8.87</b></div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <a href="mailto:aryangupta190950@gmail.com">aryangupta190950@gmail.com</a> · <a href="tel:+917044190950">+91 70441 90950</a>
+</footer>
+
+</body>
+</html>
